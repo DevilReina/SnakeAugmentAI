@@ -647,6 +647,7 @@
                 this.nextDirection = { x: 1, y: 0 };
                 this.gridSize = gridSize;
                 this.trail = [];
+                this.shouldGrow = false;
             }
 
             setDirection(newDirection) {
@@ -665,17 +666,27 @@
 
                 this.body.unshift(head);
 
-                // Add to trail for visual effect
-                this.trail.push({ ...this.body[this.body.length - 1], alpha: 1 });
-                if (this.trail.length > 10) {
-                    this.trail.shift();
+                // Add to trail for visual effect (use the tail that will be removed)
+                if (this.body.length > 1) {
+                    this.trail.push({ ...this.body[this.body.length - 1], alpha: 1 });
+                    if (this.trail.length > 10) {
+                        this.trail.shift();
+                    }
+                }
+
+                // Remove tail (snake doesn't grow unless grow() is called)
+                if (!this.shouldGrow) {
+                    this.body.pop();
+                } else {
+                    this.shouldGrow = false; // Reset grow flag
                 }
 
                 return head;
             }
 
             grow() {
-                // Don't remove tail, snake grows
+                // Set flag to grow on next move
+                this.shouldGrow = true;
             }
 
             shrink() {
