@@ -413,41 +413,43 @@
 
         /* Landscape mode optimization for mobile */
         @media (max-width: 768px) and (orientation: landscape) {
-            /* Reorganize HUD for landscape - two rows layout */
+            /* Create proper two-column layout for landscape HUD */
             .hud {
                 top: 5px;
                 left: 5px;
                 right: 5px;
-                flex-direction: row;
-                flex-wrap: wrap;
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* Two equal columns */
+                grid-template-rows: auto auto; /* Two rows */
                 gap: 8px;
-                justify-content: space-between;
-                align-items: flex-start;
+                justify-items: start;
+                align-items: start;
             }
 
-            /* First row: Score and Level on left, Length and Power-ups on right */
+            /* Left column: SCORE on top, LEVEL below */
             .hud-section:nth-child(1) { /* SCORE */
-                order: 1;
-                flex: 0 0 auto;
-                margin-right: 15px;
+                grid-column: 1;
+                grid-row: 1;
+                justify-self: start;
             }
 
             .hud-section:nth-child(2) { /* LEVEL */
-                order: 2;
-                flex: 0 0 auto;
-                margin-right: auto;
+                grid-column: 1;
+                grid-row: 2;
+                justify-self: start;
+            }
+
+            /* Right column: POWER-UPS on top, LENGTH below */
+            .hud-section:nth-child(4) { /* POWER-UPS */
+                grid-column: 2;
+                grid-row: 1;
+                justify-self: end;
             }
 
             .hud-section:nth-child(3) { /* LENGTH */
-                order: 3;
-                flex: 0 0 auto;
-                margin-left: auto;
-                margin-right: 15px;
-            }
-
-            .hud-section:nth-child(4) { /* POWER-UPS */
-                order: 4;
-                flex: 0 0 auto;
+                grid-column: 2;
+                grid-row: 2;
+                justify-self: end;
             }
 
             .hud-section {
@@ -481,20 +483,20 @@
                 font-size: 7px;
             }
 
-            /* Landscape canvas positioning */
+            /* Landscape canvas positioning - move up by 15px */
             .game-container {
-                padding-top: 15px; /* Minimal top space for landscape */
+                padding-top: 0px; /* Move canvas up by 15px (was 15px) */
             }
 
             #gameCanvas {
-                max-height: calc(100vh - 80px); /* Much more vertical space in landscape */
+                max-height: calc(100vh - 65px); /* Adjust for moved canvas */
                 max-width: calc(100vw - 10px);
             }
 
-            /* Landscape joystick positioning - left side and higher */
+            /* Landscape joystick positioning - left side */
             .virtual-joystick {
-                bottom: 120px; /* 20px higher than portrait */
-                left: 30px; /* Move to left side */
+                bottom: 120px;
+                left: 30px; /* Keep on left side for landscape ergonomics */
                 transform: none; /* Remove centering transform */
                 width: 90px;
                 height: 90px;
@@ -505,9 +507,9 @@
                 height: 32px;
             }
 
-            /* Keep pause button on right in landscape */
+            /* Pause button moved up by 15px in landscape */
             .mobile-pause-btn {
-                bottom: 80px;
+                bottom: 95px; /* Moved up by 15px (was 80px) */
                 right: 20px;
                 width: 45px;
                 height: 45px;
