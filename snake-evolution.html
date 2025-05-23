@@ -379,11 +379,11 @@
 
             /* Adjust canvas positioning for portrait mode */
             .game-container {
-                padding-top: 60px; /* Reduced space for compact HUD, moved up 20px */
+                padding-top: 20px; /* Minimal space - bring canvas closer to POWER-UPS */
             }
 
             #gameCanvas {
-                max-height: calc(100vh - 180px); /* Adjusted for moved up positioning */
+                max-height: calc(100vh - 140px); /* More space with minimal top padding */
                 max-width: calc(100vw - 10px);
             }
 
@@ -429,11 +429,11 @@
             }
 
             .game-container {
-                padding-top: 70px;
+                padding-top: 25px; /* Minimal space for very small screens */
             }
 
             #gameCanvas {
-                max-height: calc(100vh - 180px);
+                max-height: calc(100vh - 145px); /* More space for small screens */
             }
 
             .virtual-joystick {
@@ -593,7 +593,7 @@
                     if (isPortrait) {
                         // Portrait mode: optimize for vertical space
                         maxWidth = Math.min(400, window.innerWidth * 0.95);
-                        maxHeight = Math.min(520, window.innerHeight * 0.65); // More space with raised positioning
+                        maxHeight = Math.min(580, window.innerHeight * 0.75); // Much more space with minimal top padding
                     } else {
                         // Landscape mode: use more horizontal space
                         maxWidth = Math.min(600, window.innerWidth * 0.7);
