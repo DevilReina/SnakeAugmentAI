@@ -411,6 +411,110 @@
             }
         }
 
+        /* Landscape mode optimization for mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            /* Reorganize HUD for landscape - two rows layout */
+            .hud {
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            /* First row: Score and Level on left, Length and Power-ups on right */
+            .hud-section:nth-child(1) { /* SCORE */
+                order: 1;
+                flex: 0 0 auto;
+                margin-right: 15px;
+            }
+
+            .hud-section:nth-child(2) { /* LEVEL */
+                order: 2;
+                flex: 0 0 auto;
+                margin-right: auto;
+            }
+
+            .hud-section:nth-child(3) { /* LENGTH */
+                order: 3;
+                flex: 0 0 auto;
+                margin-left: auto;
+                margin-right: 15px;
+            }
+
+            .hud-section:nth-child(4) { /* POWER-UPS */
+                order: 4;
+                flex: 0 0 auto;
+            }
+
+            .hud-section {
+                padding: 4px 8px;
+                min-width: auto;
+                text-align: center;
+            }
+
+            .hud-title {
+                font-size: 10px;
+                margin-bottom: 2px;
+            }
+
+            .hud-value {
+                font-size: 14px;
+            }
+
+            /* Compact power-ups for landscape */
+            .power-ups {
+                justify-content: center;
+                gap: 4px;
+            }
+
+            .power-up {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+
+            .power-up-timer {
+                font-size: 7px;
+            }
+
+            /* Landscape canvas positioning */
+            .game-container {
+                padding-top: 15px; /* Minimal top space for landscape */
+            }
+
+            #gameCanvas {
+                max-height: calc(100vh - 80px); /* Much more vertical space in landscape */
+                max-width: calc(100vw - 10px);
+            }
+
+            /* Landscape joystick positioning - left side and higher */
+            .virtual-joystick {
+                bottom: 120px; /* 20px higher than portrait */
+                left: 30px; /* Move to left side */
+                transform: none; /* Remove centering transform */
+                width: 90px;
+                height: 90px;
+            }
+
+            .joystick-knob {
+                width: 32px;
+                height: 32px;
+            }
+
+            /* Keep pause button on right in landscape */
+            .mobile-pause-btn {
+                bottom: 80px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+
         /* Additional styles for very small screens (phones in portrait) */
         @media (max-width: 480px) and (orientation: portrait) {
             .hud {
@@ -599,9 +703,9 @@
                         maxWidth = Math.min(400, window.innerWidth * 0.95);
                         maxHeight = Math.min(580, window.innerHeight * 0.75); // Much more space with minimal top padding
                     } else {
-                        // Landscape mode: use more horizontal space
-                        maxWidth = Math.min(600, window.innerWidth * 0.7);
-                        maxHeight = Math.min(400, window.innerHeight * 0.7);
+                        // Landscape mode: maximize both dimensions with new compact HUD
+                        maxWidth = Math.min(700, window.innerWidth * 0.85);
+                        maxHeight = Math.min(480, window.innerHeight * 0.85); // Much larger with compact HUD
                     }
                 } else {
                     // Desktop sizing
