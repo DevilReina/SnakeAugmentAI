@@ -247,8 +247,9 @@
         /* Virtual Joystick Styles */
         .virtual-joystick {
             position: absolute;
-            bottom: 30px;
-            left: 30px;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 120px;
             height: 120px;
             background: rgba(0, 255, 255, 0.1);
@@ -389,8 +390,9 @@
 
             /* Better positioning for mobile controls */
             .virtual-joystick {
-                bottom: 100px; /* Raised by 20px for better accessibility */
-                left: 20px;
+                bottom: 170px; /* Raised by 40px for better accessibility */
+                left: 50%;
+                transform: translateX(-50%);
                 width: 100px;
                 height: 100px;
             }
@@ -437,7 +439,9 @@
             }
 
             .virtual-joystick {
-                bottom: 60px;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%);
                 width: 90px;
                 height: 90px;
             }
