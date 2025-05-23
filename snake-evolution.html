@@ -379,17 +379,17 @@
 
             /* Adjust canvas positioning for portrait mode */
             .game-container {
-                padding-top: 80px; /* Space for compact HUD */
+                padding-top: 60px; /* Reduced space for compact HUD, moved up 20px */
             }
 
             #gameCanvas {
-                max-height: calc(100vh - 200px); /* More space for controls */
+                max-height: calc(100vh - 180px); /* Adjusted for moved up positioning */
                 max-width: calc(100vw - 10px);
             }
 
             /* Better positioning for mobile controls */
             .virtual-joystick {
-                bottom: 80px; /* Higher position */
+                bottom: 100px; /* Raised by 20px for better accessibility */
                 left: 20px;
                 width: 100px;
                 height: 100px;
@@ -401,7 +401,7 @@
             }
 
             .mobile-pause-btn {
-                bottom: 80px; /* Match joystick height */
+                bottom: 100px; /* Match joystick height, raised by 20px */
                 right: 20px;
                 width: 50px;
                 height: 50px;
@@ -593,7 +593,7 @@
                     if (isPortrait) {
                         // Portrait mode: optimize for vertical space
                         maxWidth = Math.min(400, window.innerWidth * 0.95);
-                        maxHeight = Math.min(500, window.innerHeight * 0.6); // Leave space for controls
+                        maxHeight = Math.min(520, window.innerHeight * 0.65); // More space with raised positioning
                     } else {
                         // Landscape mode: use more horizontal space
                         maxWidth = Math.min(600, window.innerWidth * 0.7);
