@@ -419,37 +419,33 @@
                 left: 5px;
                 right: 5px;
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* Two equal columns */
+                grid-template-columns: auto auto; /* Two columns for left and right groups */
                 grid-template-rows: auto auto; /* Two rows */
-                gap: 8px;
-                justify-items: start;
+                gap: 15px 20px; /* row-gap column-gap */
+                justify-content: space-between;
                 align-items: start;
             }
 
-            /* Left column: SCORE on top, LEVEL below */
+            /* Left column: SCORE on top row, LEVEL on bottom row */
             .hud-section:nth-child(1) { /* SCORE */
                 grid-column: 1;
                 grid-row: 1;
-                justify-self: start;
             }
 
             .hud-section:nth-child(2) { /* LEVEL */
                 grid-column: 1;
                 grid-row: 2;
-                justify-self: start;
             }
 
-            /* Right column: POWER-UPS on top, LENGTH below */
+            /* Right column: POWER-UPS on top row, LENGTH on bottom row */
             .hud-section:nth-child(4) { /* POWER-UPS */
                 grid-column: 2;
                 grid-row: 1;
-                justify-self: end;
             }
 
             .hud-section:nth-child(3) { /* LENGTH */
                 grid-column: 2;
                 grid-row: 2;
-                justify-self: end;
             }
 
             .hud-section {
